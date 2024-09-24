@@ -27,9 +27,9 @@ class Profile extends StatelessWidget {
                 children: [
                   MyRoundedPicture(
                     borderRadius: 100,
-                    imageSize: 130,
+                    imageSize: 120,
                     imageUrl:
-                        "https://static.zerochan.net/Minato.Aqua.full.2439296.jpg",
+                        "https://c4.wallpaperflare.com/wallpaper/732/170/347/hololive-nakiri-ayame-hd-wallpaper-preview.jpg",
                   ),
                   SizedBox(width: 16.0),
                   Expanded(
@@ -62,7 +62,7 @@ class Profile extends StatelessWidget {
                 'Recently played songs',
                 style: TextStyle(
                   color: colorWhite,
-                  fontSize: 25,
+                  fontSize: 23,
                   fontWeight: FontWeight.bold,
                 ),
               ),

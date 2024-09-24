@@ -9,8 +9,12 @@ const colorList = Color.fromARGB(255, 18, 18, 18);
 const secondTextColor = Color.fromARGB(255, 167, 167, 167);
 const iconColor = Color.fromARGB(255, 167, 167, 167);
 const menuColor = Color.fromARGB(255, 179, 179, 179);
+const splashColor = Color.fromARGB(45, 255, 255, 255);
 
 const borderColor = Color.fromARGB(255, 179, 179, 179);
+
+const enabledBorderColor = Color.fromARGB(255, 80, 101, 117); 
+const focusedBorderColor = Color.fromARGB(255, 133, 149, 164);
 
 const colorBackground = Color.fromARGB(255, 18, 18, 18);
 const backgroundGradient = <Color>[

@@ -5,12 +5,12 @@ class MyList extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
   final Color secondTextColor;
-  final Color iconColor;
+  final Color? iconColor;
   final Color splashColor;
   final String imageUrl;
-  final IconData icon;
+  final IconData? icon;
   final double imageSize;
-  final double iconSize;
+  final double? iconSize;
   final double fontSize;
   final FontWeight fontWeight;
   final double secondFontSize;
@@ -28,12 +28,12 @@ class MyList extends StatelessWidget {
       required this.backgroundColor,
       required this.textColor,
       required this.secondTextColor,
-      required this.iconColor,
+      this.iconColor,
       required this.splashColor,
       required this.imageUrl,
-      required this.icon,
+      this.icon,
       required this.imageSize,
-      required this.iconSize,
+      this.iconSize,
       required this.fontSize,
       required this.fontWeight,
       required this.secondFontSize,
@@ -51,7 +51,6 @@ class MyList extends StatelessWidget {
     return Container(
       height: height,
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 16.0),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(borderRadius),
@@ -66,7 +65,7 @@ class MyList extends StatelessWidget {
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
                     ClipRRect(
@@ -91,7 +90,7 @@ class MyList extends StatelessWidget {
                               fontWeight: fontWeight,
                             ),
                           ),
-                          SizedBox(height: 4.0),
+                          SizedBox(height: 2.0),
                           Text(
                             secondText,
                             style: TextStyle(
