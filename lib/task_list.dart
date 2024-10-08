@@ -60,6 +60,7 @@ class TaskList extends StatelessWidget {
                   icon: Icon(
                     Icons.star_rounded,
                     size: 33,
+                    color: iconColor,
                   ),
                   onPressed: () {
                     taskController.deleteTask(task.id!);
