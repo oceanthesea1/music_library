@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:music_library/controller/task_controller.dart';
-import 'package:music_library/task_list.dart';
+import 'package:music_library/controller/fav_song_controller.dart';
+import 'package:music_library/fav_song_list.dart';
 import 'package:music_library/widgets/my_color_list.dart';
-import 'package:music_library/widgets/my_list.dart';
 
 class Favorite extends StatelessWidget {
-  final TaskController taskController = Get.put(TaskController());
+  final FavSongController favSongController = Get.put(FavSongController());
   Favorite({super.key});
 
   @override
   Widget build(BuildContext context) {
-    taskController.loadTasks();
-    
+    favSongController.loadFavSong();
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

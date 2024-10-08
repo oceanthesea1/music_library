@@ -1,11 +1,11 @@
-class TaskModel {
+class FavSongModel {
   int? id;
   String title;
   String artist;
   String image;
   bool isCompleted;
 
-  TaskModel({
+  FavSongModel({
     this.id,
     required this.title,
     required this.artist,
@@ -23,8 +23,8 @@ class TaskModel {
     };
   }
 
-  factory TaskModel.fromMap(Map<String, dynamic> map) {
-    return TaskModel(
+  factory FavSongModel.fromMap(Map<String, dynamic> map) {
+    return FavSongModel(
       id: map['id'],
       title: map['title'],
       artist: map['artist'],

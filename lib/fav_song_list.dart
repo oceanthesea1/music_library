@@ -1,10 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:music_library/controller/task_controller.dart';
+import 'package:music_library/controller/fav_song_controller.dart';
 import 'package:music_library/widgets/my_color_list.dart';
 
 class TaskList extends StatelessWidget {
-  final TaskController taskController = Get.find<TaskController>();
+  final FavSongController favSongController = Get.find<FavSongController>();
+
+  void showDeleteConfirmationDialog(BuildContext context, favSong) {
+    Get.dialog(
+      AlertDialog(
+        title: Text('Confirm'),
+        content: Text('Do you really want to remove "${favSong.title}" from your favorites?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back(); 
+              favSongController.deleteFavSong(favSong);
+              Get.snackbar(
+                'Song Status Changed!',
+                'Removed ${favSong.title} by ${favSong.artist} from your Favorites!',
+                colorText: colorWhite,
+                snackPosition: SnackPosition.BOTTOM,
+                duration: Duration(seconds: 1),
+              );
+            },
+            child: Text('Yes', style: TextStyle(color: colorBlack)),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back(); 
+            },
+            child: Text('No', style: TextStyle(color: colorBlack),),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +48,17 @@ class TaskList extends StatelessWidget {
       ),
       child: Obx(() {
         return ListView.separated(
-          itemCount: taskController.tasks.length,
+          itemCount: favSongController.favSongs.length,
           separatorBuilder: (context, index) => SizedBox(height: 5),
           itemBuilder: (context, index) {
-            final task = taskController.tasks[index];
+            final favSong = favSongController.favSongs[index];
             return Stack(children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(children: [
                   ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.network(task.image,
+                      child: Image.network(favSong.image,
                           height: 80, width: 80, fit: BoxFit.cover)),
                   SizedBox(width: 16.0),
                   Expanded(
@@ -35,7 +66,7 @@ class TaskList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          task.title,
+                          favSong.title,
                           style: TextStyle(
                               color: colorWhite,
                               fontSize: 18,
@@ -43,7 +74,7 @@ class TaskList extends StatelessWidget {
                         ),
                         SizedBox(height: 2.0),
                         Text(
-                          task.artist,
+                          favSong.artist,
                           style: TextStyle(
                               color: secondTextColor,
                               fontSize: 14,
@@ -63,7 +94,7 @@ class TaskList extends StatelessWidget {
                     color: iconColor,
                   ),
                   onPressed: () {
-                    taskController.deleteTask(task.id!);
+                    showDeleteConfirmationDialog(context, favSong);
                   },
                 ),
               )

@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
-import 'package:music_library/models/task_models.dart';
+import 'package:music_library/models/fav_song_models.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class TaskController extends GetxController {
   static Database? _db;
 
-  var tasks = <TaskModel>[].obs;
+  var tasks = <FavSongModel>[].obs;
 
   Future<Database?> get db async {
     if (_db == null) {
@@ -37,7 +37,7 @@ class TaskController extends GetxController {
   }
 
   // Insert Task
-  Future<int> addTask(TaskModel task) async {
+  Future<int> addTask(FavSongModel task) async {
     var dbClient = await db;
     int result = await dbClient!.insert('tasks', task.toMap());
     loadTasks();
@@ -48,11 +48,11 @@ class TaskController extends GetxController {
   Future<void> loadTasks() async {
     var dbClient = await db;
     List<Map<String, dynamic>> queryResult = await dbClient!.query('tasks');
-    tasks.assignAll(queryResult.map((data) => TaskModel.fromMap(data)).toList());
+    tasks.assignAll(queryResult.map((data) => FavSongModel.fromMap(data)).toList());
   }
 
   // Update Task
-  Future<int> updateTask(TaskModel task) async {
+  Future<int> updateTask(FavSongModel task) async {
     var dbClient = await db;
     int result = await dbClient!.update(
       'tasks',
