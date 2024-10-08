@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:music_library/widgets/my_profile_music_list.dart';
 import 'package:music_library/widgets/my_rounded_picture.dart';
 import 'package:music_library/widgets/my_color_list.dart';
@@ -131,7 +132,9 @@ class Profile extends StatelessWidget {
                     style: TextStyle(
                         color: colorWhite, fontWeight: FontWeight.bold),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAllNamed('/');
+                  },
                 ),
               ),
             ],

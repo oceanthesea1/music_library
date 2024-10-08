@@ -13,8 +13,8 @@ const splashColor = Color.fromARGB(45, 255, 255, 255);
 
 const borderColor = Color.fromARGB(255, 179, 179, 179);
 
-const enabledBorderColor = Color.fromARGB(255, 80, 101, 117); 
-const focusedBorderColor = Color.fromARGB(255, 133, 149, 164);
+const enabledBorderColor = Color.fromARGB(255, 133, 149, 164); 
+const focusedBorderColor = Color.fromARGB(255, 255, 255, 255);
 
 const colorBackground = Color.fromARGB(255, 18, 18, 18);
 const backgroundGradient = <Color>[
