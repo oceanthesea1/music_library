@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:music_library/controller/task_controller.dart';
+import 'package:music_library/models/task_models.dart';
 import 'package:music_library/widgets/my_color_list.dart';
 import 'package:music_library/widgets/my_list.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final TaskController taskController = Get.put(TaskController());
+  Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: colorBackground,
+        title: Text(
+          'Home Page',
+          style: TextStyle(
+            color: colorWhite,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: Container(
           decoration: BoxDecoration(
             color: colorBackground,
@@ -18,16 +34,6 @@ class Home extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 15.0,
-                ),
-                Text(
-                  'Home Page',
-                  style: TextStyle(
-                      color: colorWhite,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 25.0,
                 ),
                 MyList(
                     backgroundColor: colorTransparent,
@@ -50,7 +56,15 @@ class Home extends StatelessWidget {
                     imageBorderRadius: 8,
                     height: 100,
                     onTap: () {},
-                    onTapIcon: () {}),
+                    onTapIcon: () {
+                      TaskModel task = TaskModel(
+                        title: "Pretender",
+                        artist: "Official HIGE DANdism",
+                        image:
+                            "https://images.genius.com/126b3f7cf37a3df10d26216b74169429.1000x1000x1.jpg",
+                      );
+                      taskController.addTask(task);
+                    }),
                 SizedBox(
                   height: 5.0,
                 ),
@@ -75,7 +89,15 @@ class Home extends StatelessWidget {
                     imageBorderRadius: 8,
                     height: 100,
                     onTap: () {},
-                    onTapIcon: () {}),
+                    onTapIcon: () {
+                      TaskModel task = TaskModel(
+                        title: "Tsubasa",
+                        artist: "Nanahoshi (CV:Shion Wakayama)",
+                        image:
+                            "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/56/19/e7/5619e764-12eb-5f71-af49-c7da60a60a51/PA00139602_0_190561_jacket.jpg/1200x1200bf-60.jpg",
+                      );
+                      taskController.addTask(task);
+                    }),
               ],
             ),
           )),
